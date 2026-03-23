@@ -90,7 +90,12 @@ export function useQueryState() {
   const setTables = useCallback((newTables) => setTablesRaw(newTables), []);
   const addFilter = useCallback((table, field) => {
     const id = `filter_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    setFilters(prev => [...prev, { id, table, field, op: '=', value: '', valueTo: '' }]);
+    setFilters(prev => [...prev, {
+      id, table, field,
+      op: '=', value: '', valueTo: '',
+      connector: 'AND',  // AND | OR  (ignored for first filter)
+      negate: false,     // wraps condition in NOT(...)
+    }]);
   }, []);
   const updateFilter = useCallback((id, patch) => {
     setFilters(prev => prev.map(f => f.id === id ? { ...f, ...patch } : f));

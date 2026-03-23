@@ -17,6 +17,12 @@
   border-radius: var(--radius-sm);
   padding: 0.5rem 0.75rem;
   flex-wrap: wrap;
+  transition: border-color 0.2s ease;
+}
+
+.filter-row--negated {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
 }
 
 .filter-row__source {
@@ -188,4 +194,72 @@
   padding: 1px 5px;
   border-radius: 99px;
   font-size: 0.7rem;
+}
+
+/* ── Connector pill (AND / OR between rows) ── */
+.filter-connector {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.2rem 0.75rem;
+}
+
+.connector-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-transform: uppercase;
+}
+
+.connector-pill--and {
+  color: #6366f1;
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.connector-pill--and:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.connector-pill--or {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.connector-pill--or:hover {
+  background: rgba(245, 158, 11, 0.2);
+}
+
+/* ── NOT button ── */
+.not-btn {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.not-btn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.not-btn--active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #ef4444;
 }

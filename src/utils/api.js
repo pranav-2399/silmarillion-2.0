@@ -55,6 +55,8 @@ export function buildQueryPayload({ tables = [], fields = [], filters = [], sort
       field: f.field,
       op: f.op,
       value: f.value,
+      connector: f.connector || 'AND',   // "AND" | "OR"
+      negate: f.negate || false,          // NOT wrapper
       ...(f.op === 'BETWEEN' ? { valueTo: f.valueTo } : {}),
     })),
     sort: sort.map(s => ({ table: s.table, field: s.field, dir: s.dir })),

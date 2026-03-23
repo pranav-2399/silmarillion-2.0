@@ -16,16 +16,31 @@ export default function App() {
       <header className="app-header">
         <div className="app-header__titles">
           <h1 className="app-header__title">Silmarillion</h1>
-          <p className="app-header__subtitle">Player Statistics Explorer</p>
+        </div>
+        <div className="tabs-container">
+          <button
+            className={`tab-btn ${!q.aggregate ? 'tab-btn--active' : ''}`}
+            onClick={() => { q.setAggregate(false); q.clearFilters(); }}
+          >
+            📊 Career Stats
+          </button>
+          <button
+            className={`tab-btn ${q.aggregate ? 'tab-btn--active' : ''}`}
+            onClick={() => { q.setAggregate(true); q.clearFilters(); }}
+          >
+            🏏 Match-Specific
+          </button>
         </div>
         <div className="app-header__actions">
-          <span className="app-header__db-tag">SQLite · Cricket DB</span>
-          <button
-            className={`action-btn ${showAdvanced ? 'action-btn--active' : ''}`}
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            {showAdvanced ? 'Hide' : 'Show'} Advanced Sources
-          </button>
+          <div style={{ display: 'flex', flexDirection: 'row', margin: '1vh 1vw', gap: '1vw' }}>
+            <span className="app-header__db-tag">SQLite · Cricket DB</span>
+            <button
+              className={`action-btn ${showAdvanced ? 'action-btn--active' : ''}`}
+              onClick={() => setShowAdvanced(!showAdvanced)}
+            >
+              {showAdvanced ? 'Hide' : 'Show'} Advanced Sources
+            </button>
+          </div>
           <button className="run-btn" onClick={q.runQuery} disabled={q.loading}>
             {q.loading ? 'Running...' : 'Run Analysis'}
           </button>
@@ -33,28 +48,6 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <div className="analytics-tabs">
-          <div className="tabs-container">
-            <button
-              className={`tab-btn ${!q.aggregate ? 'tab-btn--active' : ''}`}
-              onClick={() => { q.setAggregate(false); q.clearFilters(); }}
-            >
-              📊 Career Stats
-            </button>
-            <button
-              className={`tab-btn ${q.aggregate ? 'tab-btn--active' : ''}`}
-              onClick={() => { q.setAggregate(true); q.clearFilters(); }}
-            >
-              🏏 Match-Specific
-            </button>
-          </div>
-          <div className="tab-explanation">
-            {!q.aggregate
-              ? "⚡ Showing pre-calculated career leaderboards"
-              : "🔬 Analyzing specific match situations ball-by-ball"}
-          </div>
-        </div>
-
         <div className="query-grid">
           <div className="query-grid__main">
             <FilterBuilder

@@ -9,11 +9,11 @@ export const FIELD_TYPES = {
 
 // ─── Filter Operators ──────────────────────────────────────────────────────────
 export const FILTER_OPS_BY_TYPE = {
-  string: ['=', '!=', 'LIKE'],
+  string: ['=', '!=', 'LIKE', 'NOT LIKE'],
   number: ['=', '!=', '>', '<', '>=', '<=', 'BETWEEN'],
   boolean: ['='],
   date: ['=', '>', '<', '>=', '<=', 'BETWEEN'],
-  enum: ['=', '!='],
+  enum: ['=', '!=', 'LIKE', 'NOT LIKE'],
 };
 
 // ─── Enum Values ───────────────────────────────────────────────────────────────
