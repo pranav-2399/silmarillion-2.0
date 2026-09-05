@@ -77,7 +77,7 @@ export function buildQueryPayload({ tables = [], fields = [], filters = [], sort
  */
 export async function executeQuery(queryState) {
   const payload = buildQueryPayload(queryState);
-  return apiFetch('/query', {
+  return apiFetch('/api/query', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
@@ -88,7 +88,7 @@ export async function executeQuery(queryState) {
  * @returns {{ values: (string|number)[] }}
  */
 export async function fetchContextualValues(table, field, filters = []) {
-  return apiFetch('/values', {
+  return apiFetch('/api/values', {
     method: 'POST',
     body: JSON.stringify({ table, field, filters }),
   });
@@ -98,7 +98,7 @@ export async function fetchContextualValues(table, field, filters = []) {
  * Fetch distinct values for a field (legacy simplicity).
  */
 export async function fetchDistinctValues(table, field) {
-  return apiFetch(`/tables/${table}/values?field=${encodeURIComponent(field)}`);
+  return apiFetch(`/api/tables/${table}/values?field=${encodeURIComponent(field)}`);
 }
 
 /**
@@ -106,7 +106,7 @@ export async function fetchDistinctValues(table, field) {
  * @returns {{ tables: object }}
  */
 export async function fetchSchema() {
-  return apiFetch('/schema');
+  return apiFetch('/api/schema');
 }
 
 /**
@@ -114,7 +114,7 @@ export async function fetchSchema() {
  * @returns {{ status: 'ok', db: 'sqlite' }}
  */
 export async function ping() {
-  return apiFetch('/ping');
+  return apiFetch('/api/ping');
 }
 
 // ─── Export helpers ────────────────────────────────────────────────────────────
