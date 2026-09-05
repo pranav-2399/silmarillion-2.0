@@ -13,6 +13,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 // ─── Core fetch wrapper ────────────────────────────────────────────────────────
 async function apiFetch(path, options = {}) {
   const url = `${BASE_URL}${path}`;
+  console.log(url);
   const res = await fetch(url, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
