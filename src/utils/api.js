@@ -8,7 +8,7 @@
  * Backend expects GET  /api/tables/:table/values?field=X for distinct values.
  */
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');;
 
 // ─── Core fetch wrapper ────────────────────────────────────────────────────────
 async function apiFetch(path, options = {}) {
