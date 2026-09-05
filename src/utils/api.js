@@ -76,7 +76,7 @@ export function buildQueryPayload({ tables = [], fields = [], filters = [], sort
  */
 export async function executeQuery(queryState) {
   const payload = buildQueryPayload(queryState);
-  return apiFetch('/api/query', {
+  return apiFetch('/query', {
     method: 'POST',
     body: JSON.stringify(payload),
   });
